@@ -15,7 +15,10 @@ public class LaserShoot : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.GetComponent<Health>().TakeDamage(Damage);
+        if (collision.transform.tag == "Player")
+            collision.transform.GetComponent<PlayerHealth>().TakeDamage(Damage);
+        else
+            collision.transform.GetComponent<Health>().TakeDamage(Damage);
 
         Destroy(gameObject);
     }
